@@ -7,15 +7,23 @@ class Individual(object):
 
     # The genetic code is a list of generic objecs (genes)
     genetic_code = []
+    fitness = 0
 
     def __init__(self, genetic_code):
         super(Individual, self).__init__()
         self.genetic_code = genetic_code
 
+    def test(self):
+        return 1 - 1
+
+    def evaluate(self):
+        self.fitness = self.survival_test()
+        return self
+
     def survival_test(self):
         raise NotImplementedError(
             "survival_test should be implemented, "
-            "expressing a rating of how well individual is fit to the world"
+            "expressing a rating of how well individual is fit to the world."
         )
 
     def mutate(self):
