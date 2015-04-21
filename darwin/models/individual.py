@@ -10,8 +10,8 @@ class Individual(object):
     fitness = 0
 
     def __init__(self, genetic_code):
-        super(Individual, self).__init__()
         self.genetic_code = genetic_code
+        super(Individual, self).__init__()
 
     def test(self):
         return 1 - 1
