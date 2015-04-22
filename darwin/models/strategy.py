@@ -1,3 +1,4 @@
+import random
 
 
 class SelectionStrategy(object):
@@ -22,8 +23,9 @@ class NormalProbabilitySelection(SelectionStrategy):
 
 
 class RandomSelection(SelectionStrategy):
+
     def select(self, individual):
-        pass
+        return random.randint(0, 1)
 
 
 class MatingStrategy(object):

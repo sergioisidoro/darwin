@@ -12,6 +12,7 @@ class Individual(object):
     def __init__(self, genetic_code):
         self.genetic_code = genetic_code
         super(Individual, self).__init__()
+        self.id = id(self)
 
     def test(self):
         return 1 - 1
@@ -31,3 +32,12 @@ class Individual(object):
             "mutate should be implemented, "
             "randomly changing a gene from the idividual, with random value"
         )
+
+    def __unicode__(self):
+        return "Inidvidual %s" % self.id
+
+    def __str__(self):
+        return "Inidvidual %s" % self.id
+
+    def __repr__(self):
+        return "Inidvidual %s" % self.id

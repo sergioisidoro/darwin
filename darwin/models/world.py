@@ -40,7 +40,7 @@ class World(object):
             self.mating_strategy = mating_strategy
         else:
             # set default strategy
-            self.selection_strategy = NormalProbabilitySelection()
+            self.mating_strategy = NormalProbabilitySelection()
 
         super(World, self).__init__()
 
@@ -69,3 +69,4 @@ class World(object):
     def evolve(self, generations=100):
         for gens in range(0, generations):
             self.epoch()
+            print self.selected

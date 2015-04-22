@@ -1,6 +1,6 @@
 from darwin.models import Individual
 from darwin.models import World
-
+from darwin.models import RandomSelection
 
 class IndividualExample(Individual):
 
@@ -12,7 +12,7 @@ class IndividualExample(Individual):
 
 
 adam = IndividualExample([1, 2, 3, 4, 5, 6])
-
-brave_new_world = World(adam)
+strategy = RandomSelection()
+brave_new_world = World(adam, selection_strategy=strategy)
 
 brave_new_world.evolve()
