@@ -3,13 +3,26 @@ import random
 
 class SelectionStrategy(object):
     """docstring for SelectionStrategy"""
-
     population = None
 
     def __init__(self):
         super(SelectionStrategy, self).__init__()
 
     def select(self, individual):
+        raise NotImplemented("This is an abstract class for slection strategy")
+
+    def update_population(self, population):
+        self.population = population
+
+
+class CompetitiveSelectionStrategy(object):
+    """docstring for SelectionStrategy"""
+    population = None
+
+    def __init__(self):
+        super(SelectionStrategy, self).__init__()
+
+    def select(self, competing_idividuals):
         raise NotImplemented("This is an abstract class for slection strategy")
 
     def update_population(self, population):

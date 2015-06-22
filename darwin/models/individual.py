@@ -1,3 +1,5 @@
+import copy
+import uuid
 
 
 class Individual(object):
@@ -12,7 +14,12 @@ class Individual(object):
     def __init__(self, genetic_code):
         self.genetic_code = genetic_code
         super(Individual, self).__init__()
-        self.id = id(self)
+        self.id = uuid.uuid4()
+
+    def clone(self):
+        clone = copy.copy(self)
+        clone.id = uuid.uuid4()
+        return clone
 
     def test(self):
         return 1 - 1

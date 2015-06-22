@@ -1,7 +1,11 @@
 
 from darwin import settings
 from darwin.models.strategy import SelectionStrategy, NormalProbabilitySelection
-import copy
+import uuid
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class World(object):
@@ -21,12 +25,15 @@ class World(object):
     def __init__(self, adam, size=None,
                  selection_strategy=None,
                  mating_strategy=None):
+
+        self.id = uuid.uuid4()
         self.adam = adam
+
         if size:
             self.world_size = size
 
         for n in range(1, self.world_size):
-            adam_clone = copy.copy(adam)
+            adam_clone = self.adam.clone()
             adam_clone.mutate()
             self.population.append(adam_clone)
 
@@ -62,11 +69,15 @@ class World(object):
         select_filter = lambda x: self.selection_strategy.select(x)
         self.selected = filter(select_filter, self.population)
 
+    # Method for competing selection strategies
+    def fight(self):
+        raise NotImplemented("This is staged for future development")
+
     def mate(self, selected_individuals):
         pass
         # Randomizes the selected
 
     def evolve(self, generations=100):
-        for gens in range(0, generations):
+        for gen in range(0, generations):
+            logger.info("World %s at generation %d" % (self.id, gen))
             self.epoch()
-            print self.selected
